@@ -36,11 +36,12 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    _loading = true;
     loadModel().then((value) {
-      _loading = true;
-      setState(() {});
+      // setState(() {});
     });
   }
+
   @override
   void dispose() {
     Tflite.close();
