@@ -12,6 +12,7 @@ class _HomeState extends State<Home> {
   final picker = ImagePicker();
   File _image;
   bool _loading = false;
+  List _output;
 
   pickImage() async {
     var image = await picker.getImage(source: ImageSource.camera);
@@ -21,6 +22,7 @@ class _HomeState extends State<Home> {
     setState(() {
       _image = File(image.path);
     });
+    classifyImage(_image);
   }
 
   pickGalleryImage() async {
@@ -31,6 +33,7 @@ class _HomeState extends State<Home> {
     setState(() {
       _image = File(image.path);
     });
+    classifyImage(_image);
   }
 
   @override
@@ -55,6 +58,11 @@ class _HomeState extends State<Home> {
         threshold: 0.5,
         imageMean: 127.5,
         imageStd: 127.5);
+
+        setState(() {
+          _loading = false;
+          _output = output;
+        });
   }
 
   loadModel() async {
