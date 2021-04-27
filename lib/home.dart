@@ -59,10 +59,10 @@ class _HomeState extends State<Home> {
         imageMean: 127.5,
         imageStd: 127.5);
 
-        setState(() {
-          _loading = false;
-          _output = output;
-        });
+    setState(() {
+      _loading = false;
+      _output = output;
+    });
   }
 
   loadModel() async {
@@ -101,16 +101,37 @@ class _HomeState extends State<Home> {
               height: 50,
             ),
             Center(
-              child: Container(
-                width: 300,
-                child: Column(
-                  children: <Widget>[
-                    Image.asset('assets/cat.png'),
-                    SizedBox(height: 50),
-                  ],
-                ),
-              ),
-            ),
+                child: _loading
+                    ? Container(
+                        width: 300,
+                        child: Column(
+                          children: <Widget>[
+                            Image.asset('assets/cat.png'),
+                            SizedBox(height: 50),
+                          ],
+                        ),
+                      )
+                    : Container(
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: 250,
+                              child: Image.file(_image),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            _output != null
+                                ? Container(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Text('${_output[0]['label']}',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20.0)))
+                                : Container(),
+                          ],
+                        ),
+                      )),
             Container(
               width: MediaQuery.of(context).size.width,
               child: Column(
