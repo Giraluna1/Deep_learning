@@ -24,10 +24,12 @@ import flask
 
 app = Flask(__name__)
 
+
 def get_model():
-    global model 
-    model = load_model('goodnn.h5')
+    global model
+    model = load_model('shoes_model.h5')
     print(' * MODEL LOADED')
+
 
 def preprocess_image(image, target_size):
     if image.mode != 'RGB':
@@ -39,33 +41,42 @@ def preprocess_image(image, target_size):
     image = np.expand_dims(image, axis=0)
     return image
 
+
 print(' * Loading Keras model')
 get_model()
+
 
 @app.route('/')
 def home():
     return 'Hello world'
 
+
 @app.route('/generate', methods=['GET', 'POST'])
 def generate():
+    response = {'result': ''}
     if flask.request.method == 'POST':
         if flask.request.files.get('image'):
             image = flask.request.files['image'].read()
             image = Image.open(io.BytesIO(image))
 
-            image = preprocess_image(image, target_size=(256,256))
+            image = preprocess_image(image, target_size=(256, 256))
             preds = model.predict(image)
             epoch_time = int(time.time())
             outputfile = 'output_%s.png' % (epoch_time)
             print(' * SHAPE IS : ' + str(preds.shape))
-            
+
             output = tf.reshape(preds, [256, 256, 3])
             output = (output + 1) / 2
             save_img(outputfile, img_to_array(output))
 
-            response = {'result' : outputfile}
+            response = {'result': outputfile}
     return jsonify(response)
+
 
 @app.route('/download/<fname>', methods=['GET'])
 def download(fname):
     return send_file(fname)
+
+
+if __name__ == '__main__':
+    app.run()
