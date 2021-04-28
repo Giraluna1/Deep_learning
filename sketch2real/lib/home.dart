@@ -77,12 +77,12 @@ class _HomeState extends State<Home> {
     final imageUploadRequest = http.MultipartRequest(
         'POST',
         Uri.parse(
-            'http://127.0.0.1:8000/generate')); //PUT YOUR OWN IP HERE, it may vary depending on your computer
+            'http://172.31.224.1:5000/generate')); //PUT YOUR OWN IP HERE, it may vary depending on your computer
 
     final file = await http.MultipartFile.fromPath('image', imageFile.path,
         contentType: MediaType(mimeTypeData[0], mimeTypeData[1]));
 
-    imageUploadRequest.fields['ext'] = mimeTypeData[1];
+    //imageUploadRequest.fields['ext'] = mimeTypeData[1];
     imageUploadRequest.files.add(file);
 
     try {
@@ -104,7 +104,7 @@ class _HomeState extends State<Home> {
 
   void displayResponseImage(String fileName) async {
     setState(() {
-      String outputFile = 'http://127.0.0.1:8000/download/' + fileName;
+      String outputFile = 'http://172.31.224.1:5000/download/' + fileName;
       imageOutput = Container(
           width: 256,
           height: 256,
