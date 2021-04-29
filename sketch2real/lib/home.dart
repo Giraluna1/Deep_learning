@@ -74,10 +74,8 @@ class _HomeState extends State<Home> {
   void fetchResponse(File imageFile) async {
     final mimeTypeData =
         lookupMimeType(imageFile.path, headerBytes: [0xFF, 0xD8]).split('/');
-    final imageUploadRequest = http.MultipartRequest(
-        'POST',
-        Uri.parse(
-            'http://23.98.148.192:5000/generate')); //This is the api :(
+    final imageUploadRequest = http.MultipartRequest('POST',
+        Uri.parse('http://23.98.148.192:5000/generate')); //This is the api :(
 
     final file = await http.MultipartFile.fromPath('image', imageFile.path,
         contentType: MediaType(mimeTypeData[0], mimeTypeData[1]));
@@ -140,8 +138,6 @@ class _HomeState extends State<Home> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  // Color(0xFFffd200),
-                  // Color(0xFFF7971E),
                   Color.fromRGBO(138, 35, 135, 1.0),
                   Color.fromRGBO(233, 64, 87, 1.0),
                   Color.fromRGBO(242, 113, 33, 1.0)
@@ -149,23 +145,12 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          // SizedBox(height: 10),
           Align(
             alignment: Alignment.topCenter,
             child: Container(
               child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // SizedBox(height: 200),
-                  // Text(
-                  //   'Sketch2Real',
-                  //   style: TextStyle(
-                  //     color: Colors.black,
-                  //     fontSize: 50,
-                  //   ),
-                  // ),
-                ],
+                children: [],
               ),
             ),
           ),
@@ -244,7 +229,6 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         child: Row(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             IconButton(
@@ -287,7 +271,6 @@ class _HomeState extends State<Home> {
               : SafeArea(
                   child: Column(
                     children: <Widget>[
-                      // img1,
                       SizedBox(
                         height: 10,
                       ),
@@ -319,15 +302,6 @@ class _HomeState extends State<Home> {
                         child: Container(
                             height: 256, width: 256, child: imageOutput),
                       ),
-                      // SizedBox(height: 30),
-                      // imgBytes != null
-                      //     ? Center(
-                      //         child: Image.memory(
-                      //         Uint8List.view(imgBytes.buffer),
-                      //         width: 256,
-                      //         height: 256,
-                      //       ))
-                      //     : Text('No image saved')
                     ],
                   ),
                 ),
