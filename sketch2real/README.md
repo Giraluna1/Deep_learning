@@ -2,7 +2,11 @@
 
 <div align="center"><img src="https://www.nielsen.com/wp-content/uploads/sites/3/2019/04/data-science-icon-animation-banner-clockwise.gif"></div>
 
+<br>
+
 This is a mobile application developed in Flutter, it consists of the use of a trained neural network to recognize objects, these objects are created from a handmade drawing which is passed as input to the neural network and this is able to analyze the drawing and return a realistic image.
+
+<br>
 
 ## Technologies
 
@@ -11,6 +15,8 @@ This is a mobile application developed in Flutter, it consists of the use of a t
 - Python
 -  Flask
 - Tensorflow
+
+<br>
 
 ## Usage
 The use of this app is quite simple we just need to draw an object for example a shoe and the neural network behind the app will do the magic: 
@@ -23,16 +29,14 @@ No we just ned to wait and the result its just amazing:
 <center><img src="https://i.imgur.com/w97CXDJ.png" width="200"/><center>
 
 
-
-
+<br>
 
 ## Bugs
 
-  
 
 The only known bug is that while you are trying to draw you will not see what you are drawing but the drawing is being generated. 
 
-  
+  <br>
 
 ## Our Team
 
@@ -52,7 +56,7 @@ The only known bug is that while you are trying to draw you will not see what yo
 * Github: [@julianmendezw](https://github.com/julianmendezw)
 * LinkedIn: [@julianmendezw](https://linkedin.com/in/julianmendezw)
 
-  
+ <br> 
 
 ## 🤝 Contributing
 
@@ -64,7 +68,7 @@ Contributions, issues and feature requests are welcome!.
 
 ## Show your support
 
-  
+  <br>
 
 Give a ⭐️ if this project liked you!
 
