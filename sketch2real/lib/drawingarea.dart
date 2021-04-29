@@ -16,7 +16,7 @@ class MyCustomPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // TODO: implement paint
+
     Paint background = Paint()..color = Colors.white;
     Rect rect = Rect.fromLTWH(0, 0, size.width, size.height);
     canvas.drawRect(rect, background);
@@ -35,7 +35,6 @@ class MyCustomPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(MyCustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
     return oldDelegate.points != points;
   }
 }
